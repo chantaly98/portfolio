@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.1098caae.css",
-    "main.js": "/portfolio/static/js/main.9dca608f.js",
+    "main.css": "/portfolio/static/css/main.debe0664.css",
+    "main.js": "/portfolio/static/js/main.325cb2f9.js",
     "static/media/pexels-cottonbro-3944406.jpg": "/portfolio/static/media/pexels-cottonbro-3944406.18d84371eee306e135e7.jpg",
     "static/media/fa-solid-900.ttf": "/portfolio/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/portfolio/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -18,11 +18,11 @@
     "static/media/git.svg": "/portfolio/static/media/git.6d27b5e0cde4ddb87e031ca706aa8350.svg",
     "static/media/vscode.svg": "/portfolio/static/media/vscode.8b18e9e23f55d05d5c2b5cd6f0edf4fb.svg",
     "static/media/npm.svg": "/portfolio/static/media/npm.0455bd8355eee4b54e3b3edee96d2c60.svg",
-    "main.1098caae.css.map": "/portfolio/static/css/main.1098caae.css.map",
-    "main.9dca608f.js.map": "/portfolio/static/js/main.9dca608f.js.map"
+    "main.debe0664.css.map": "/portfolio/static/css/main.debe0664.css.map",
+    "main.325cb2f9.js.map": "/portfolio/static/js/main.325cb2f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.1098caae.css",
-    "static/js/main.9dca608f.js"
+    "static/css/main.debe0664.css",
+    "static/js/main.325cb2f9.js"
   ]
 }
