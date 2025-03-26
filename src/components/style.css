@@ -1,0 +1,839 @@
+/* --------------------------------- Style across all website --------------------------------- */
+
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+@font-face {
+    font-family: "Italiana";
+    src: url('../fonts/Italiana-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url('../fonts/Poppins-Light.ttf');
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+  
+:root{
+    /*Light Mode*/
+    --clay: #EDE1D2;
+    --terracotta: #B56727;
+    --light: #f3af78;
+    --olive: #666c4c;
+    --cafe: #3a3025;
+    --almond:#E8DACB;
+    /*Dark Mode*/
+    --crimson:#531509;
+    --sienna: #250C0A;
+}
+
+body{
+    font-family: "Italiana";
+    color: var(--cafe);
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll; /* Show scrollbar vertically */
+}
+
+h2{
+    font-family: "Italiana";
+    color: var(--terracotta);
+    text-align: center;
+    font-size: 50px;
+}
+
+p{
+    font-family:"Poppins";
+}
+  
+/* Hide the scrollbar for Webkit (Chrome, Safari, etc.) */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px); /* Adjust to move element up or down */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+    font-family: "Poppins";
+}
+
+/* --------------------------------- NAVIGATION BAR --------------------------------- */
+
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--clay);
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+/* Base styles for the menu */
+.menu {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: right;
+}
+
+/* Styles for menu list items */
+ul li {
+    position: relative;
+    margin: 0 20px;
+    list-style: none;
+    display: inline-block;
+    padding: 5px;
+}
+
+/* Link styles */
+ul li a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--cafe);
+    font-weight: normal;
+}
+
+ul li a:hover {
+    border-bottom: 2px solid var(--cafe);
+}
+
+ul li a.active {
+    font-weight: bold;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cafe);
+    margin: 3px 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+  
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute; 
+        top: 60px; /* Adjust this based on your navbar height */
+        left: 0;
+        background-color:var(--clay); 
+        width: 100%; /* Full width */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for visibility */
+        z-index: 10;
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px 0; /* Add some padding */
+        opacity: 0; /* Start with the menu hidden */
+        transform: translateY(-10px); /* Slightly offset it from the top */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    }
+
+    .menu.active {
+        display: flex; /* Show the menu when active */
+        opacity: 1; /* Make the menu visible */
+        transform: translateY(0); /* Move to its original position */
+    }
+
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu ul li {
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .menu ul li a {
+        color: var(--cafe);
+        font-size: 20px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+
+    .menu ul li a:hover {
+        border-bottom: 2px solid var(--cafe);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+.nav-button {
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--cafe); 
+    padding: 7px 20px; 
+    border: 1px solid var(--cafe); 
+    border-radius: 30px; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden; 
+    width: 80px; 
+}
+
+.nav-button::after {
+    content: '\f019'; 
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: -25px;
+    opacity: 0;
+    transition: opacity 0.3s, right 0.3s;
+}
+
+.nav-button:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+.nav-button:hover {
+    background-color: var(--cafe); 
+    color: white;
+    justify-content: left;
+}
+
+
+/* --------------------------------- LANDING SECTION --------------------------------- */
+
+
+#landing-section {
+    background: var(--clay); /*linear-gradient(to bottom, var(--cafe), var(--clay)); */
+}
+
+.landing-page {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+    height: 100vh; /* Make the div take up the full viewport height */
+}
+
+.landing-page .intro {
+    margin-bottom: 20px; /* Add space below the intro */
+}
+
+.computer {
+    width: 650px;
+    height: auto;
+    position: relative;
+    overflow: hidden; /* Ensures any overflowing content is hidden */
+    opacity: 0; /* Start invisible */
+    transform: translateY(100%); /* Start off-screen (below the viewport) */
+    animation: slide-up 3s ease-out forwards; /* Trigger the slide-up animation */
+}
+
+.intro {
+    font-family: "Italiana";
+    color: var(--cafe);
+    font-size: 45px;
+    margin-bottom: 20px; /* Add space below the intro */
+    transform: translateX(-100%); /* Start off-screen to the left */
+    animation: slide-in 2.5s forwards; /* Slide in animation */
+    text-align: center;
+    padding-left: 5%;
+}
+
+.bold-intro{
+    font-weight: 600;
+    color: var(--terracotta);
+}
+
+/* Keyframes for sliding in */
+@keyframes slide-in {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes for the slide-up animation */
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.name {
+    text-shadow: 1px 1px 4px #173A2B;
+    font-size: 55px;
+}
+
+.btn {
+    border-radius: 4px;
+    background-color: none;
+    border: 2px solid var(--olive);
+    color: var(--olive);
+    text-decoration: solid;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 10px;
+    width: 220px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 36px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;  
+    top: 10px;
+    right: -30px;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    padding-right: 24px;
+    padding-left:8px;
+    background-color: var(--olive);
+    border: solid var(--olive);
+    color: white;
+}
+
+.btn:hover:after {
+    opacity: 1;
+    right: 30px;
+}
+
+
+/* Media query to hide the picture on smaller screens */
+@media (max-width: 1000px) {
+    .computer {
+        display: none;
+    }
+    
+    .intro {
+        font-size: 35px; /* Adjust the font size for smaller screens */
+    }
+    
+    .name {
+        font-size: 45px; /* Adjust the font size for smaller screens */
+    }
+    
+    .btn {
+        width: 180px; /* Adjust the button width for smaller screens */
+        font-size: 16px; /* Adjust the font size for smaller screens */
+    }
+}
+
+  
+/* --------------------------------- PROJECTS PAGE --------------------------------- */
+
+
+.projects{
+    padding-top: 6%;
+    width: 100%;
+    background: linear-gradient(to bottom, var(--clay), #FFF);
+}
+
+#project-title{ 
+    padding-left: 2%;
+    color: var(--cafe);
+    text-align: center;
+}
+  
+.projects p {
+    color: var(--olive);
+    text-align: center;
+    font-size: 18px;
+}
+
+  
+hr.solid {
+    border-top: 1.5px solid var(--terracotta);
+    width: 100%;
+}
+
+.long-bar {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    height: 600px;
+}
+
+.box {
+    flex: 1 1 calc(33% - 20px); /* 3 boxes per row with spacing */
+    max-width: calc(33% - 20px); /* Ensure the boxes fit within the container */
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: None;
+    border-radius: 10px;
+    height: 450px; /* Adjust height as needed */
+}
+
+.box img {
+    width: 100%;
+    height: 65%; /* Maintain the aspect ratio */
+    transition: transform 0.3s; /* Smooth transition for transform */
+}
+
+.box:hover img {
+    transform: scale(1.05); /* Scale up the image slightly on hover */
+    cursor: pointer;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .box {
+        flex: 1 1 calc(50% - 20px); /* 2 boxes per row for medium screens */
+        max-width: calc(50% - 20px);
+    }
+    .long-bar{
+        padding-bottom: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .box {
+        flex: 1 1 100%; /* 1 box per row for small screens */
+        max-width: 100%;
+    }
+    .box img{
+        max-width: 80%;
+    }
+    .long-bar{
+        padding-bottom: 750px;
+    }
+}
+  
+  
+/* --------------------------------- PROJECTS PAGE - POPUP BOXES SUBSECTION --------------------------------- */
+
+
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    z-index: 9999;
+}
+  
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 80%;
+    max-width: 1000px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row; /* Default layout for larger screens */
+    height: 55%;
+    border-radius: 10px;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+  
+.text-container {
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+}
+  
+.video-container {
+    padding-top: 45px;
+    padding-left: 10px;
+    max-width: 60%; /* Set maximum width for the container */
+    margin: 0 auto; /* Center the video container horizontally */
+    overflow: hidden; /* Hide any overflow */
+}
+  
+.video-container video {
+    max-width: 100%; /* Set maximum width for the video */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the video behaves as a block element */
+}
+  
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    color: var(--cafe);
+}
+  
+.close-btn:hover {
+    font-weight: bold;
+    color: var(--terracotta);
+}
+  
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    .popup-content {
+        flex-direction: column; /* Stack video and text vertically on small screens */
+        height: auto; /* Adjust height to fit content */
+        max-height: 100vh; /* Limit height to 80% of the viewport height */
+    }
+    
+    .video-container {
+        max-width: 100%; /* Ensure the video takes up full width */
+        padding-left: 0; /* Remove left padding */
+    }
+    
+    .text-container {
+        padding-left: 0; /* Remove left padding */
+        padding-right: 0; /* Remove right padding */
+        margin-top: 10px; /* Add margin between video and text */
+    }
+}
+
+
+/* --------------------------------- ABOUT ME PAGE --------------------------------- */
+#about {
+    padding-top: 4%;
+    padding-bottom: 5%;
+    background: white;
+    font-size: 18px;
+}
+
+.about-page {
+    padding: 20px;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile {
+    width: 650px;
+    height: auto;
+    padding-bottom: 40px;
+}
+
+.container {
+    width: 30vmin;
+    height: 30vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    margin-left: 15vmin;
+}
+
+.about-text {
+    flex: 2;
+    margin-right: 40px;
+    padding-right: 50px;
+    text-align: justify;
+}
+
+.subsections {
+    padding-top: 4%;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.subsections h3 {
+    text-align: left;
+}
+
+.flex-box {
+    flex: 2;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-box ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex-box ul li {
+    font-size: 17.5px;
+}
+
+.flex-box:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .subsections {
+        flex-direction: column;
+    }
+
+    .flex-box {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .flex-box:last-child {
+        margin-bottom: 0;
+    }
+
+    .flex-box ul {
+        grid-template-columns: 1fr; /* Stack items in one column on smaller screens */
+    }
+}
+
+/* --------------------------------- ABOUT ME PAGE - TECHNICAL STACK SUBSECTION --------------------------------- */
+.tech-container {
+    width: 100%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #666c004c;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-container h2{
+    color: var(--cafe);
+    text-align: center;
+}
+
+.technical-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add space between icons */
+    justify-content: center; /* Center the icons */
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the section */
+}
+  
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100px; /* Adjust width to fit 4 items per row */
+    height: 120px; /* Adjust height as needed */
+}
+
+.tech-icon-wrapper {
+    background-color: white;
+    border-radius: 50%; /* Adjust the size of the border radius */
+    padding: 10px; /* Add padding to increase the size of the wrapper */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; 
+    height: 60px;
+}
+  
+.tech-item p {
+    font-size: 18px; /* Adjust text size if needed */
+    color: var(--cafe); /* Adjust text color */
+}
+
+.custom-icon {
+  width: 48px; 
+  height: 48px;
+  margin: 0 10px; /* Adjust the spacing as needed */
+}
+
+@media (max-width: 1024px) {
+    .tech-container {
+        padding-left: 4%;
+    }
+}
+/* --------------------------------- CONTACT ME PAGE  --------------------------------- */
+
+
+.contact-section {
+    background-image: url('/public/images/pexels-cottonbro-3944406.jpg');
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding: 50px 0; /* Add some padding to the section */
+    color: white; /* Ensure the text is readable on the background */
+    position: relative; /* Create a context for absolute positioning */
+}
+
+.form-container {
+    background: rgba(58, 48, 37, 0.6); /* Semi-transparent background for readability */
+    padding: 20px;
+    max-width: 580px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2,
+.contact-section p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.contact-section hr{
+    color: white;
+}
+.contact-section .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-section button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cafe);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: width 0.3s ease, padding 0.3s ease; 
+}
+
+.contact-section button:hover {
+    width: 101%;
+    padding: 12px;
+    background-color: var(--terracotta);
+}
+
+.contact-section .error-message,
+.contact-section .success-message {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.contact-section .error-message {
+    background-color: var(--crimson);
+    color: white;
+}
+
+.contact-section .success-message {
+    background-color: var(--olive);
+    color: white;
+}
+
+.form-group{
+    padding-right: 20px;
+}
+/* --------------------------------- FOOTER  --------------------------------- */
+
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--olive);
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+}
+  
+.nav-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.nav-icons a {
+    color: white;
+    font-size: 1.75em;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+  
+.nav-icons a:hover {
+    color: var(--terracotta);
+}
