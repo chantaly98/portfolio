@@ -33,7 +33,13 @@ const NavBar = () => {
             <a href="#contact" className="nav-link" id="nav3">CONTACT</a>
           </li>
           <li>
-          <a href="Chantal_Ramos_Resume.pdf" className="nav-button" download="Chantal_Ramos_Resume.pdf">Resume</a>
+          <a 
+            href={process.env.PUBLIC_URL + '/files/Chantal_Ramos_Resume.pdf'} 
+            className="nav-button" 
+            download="Resume_ChantalRamos.pdf"
+          >
+            Resume
+          </a>
           </li>
         </ul>
       </div>

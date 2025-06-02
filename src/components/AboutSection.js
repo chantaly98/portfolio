@@ -13,7 +13,11 @@ const AboutSection = () => {
             <h2 className="about-header">About Me</h2>
             <div class="container">
                 <div class="img-box">
-                <img src="/images/Profile.JPG" class="profile" alt="profile" />
+                <img 
+                  src={process.env.PUBLIC_URL + '/images/Profile.JPG'} 
+                  className="profile" 
+                  alt="profile" 
+                />
                 </div>
               </div>
             <p>

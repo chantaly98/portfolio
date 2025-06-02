@@ -4,7 +4,11 @@ import './style.css';
 const LandingSection = () => (
   <section id="landing-section" className="landing-page">
     <div className="opening-picture">
-      <img src="/images/laptop_vase.jpg" class="computer" alt="computer" />
+    <img 
+      src={process.env.PUBLIC_URL + '/images/laptop_vase.jpg'} 
+      className="computer" 
+      alt="computer" 
+    />
     </div>
     <div className="intro">
       <p>Hello, I'm <span className="bold-intro">Chantal Ramos</span>,</p>
